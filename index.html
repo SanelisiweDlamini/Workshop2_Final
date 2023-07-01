@@ -11,13 +11,49 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/styles.css" />
-
     <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="container">
-      <h1>Weather</h1>
-      <button type="button" class="btn btn-primary">Primary</button>
+    <div class="container" id="box">
+      <form class="row g-3" id="searchEngine">
+        <div class="col-auto">
+          <input
+            type="text"
+            class="form-control"
+            id="input"
+            placeholder="City"
+            ;
+          />
+        </div>
+
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Search</button>
+        </div>
+      </form>
+      <h2>City</h2>
+      <p class="date">Date</p>
+      <p class="descr">Description</p>
+      <div class="row">
+        <div class="col-8">
+          <h1 class="weather">23°C|73.4F</h1>
+        </div>
+        <div class="col-4" id="extras">
+          <p id="humid">Humidity:23%</p>
+          <p id="windspeed">Windspeed:10km/h</p>
+        </div>
+      </div>
+      <div>
+        <a href="https://github.com/SanelisiweDlamini/Workshop2_Final"
+          >SheCodes project</a
+        >
+        by Sanelisiwe
+      </div>
     </div>
 
     <script src="src/index.js"></script>

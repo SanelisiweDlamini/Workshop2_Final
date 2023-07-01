@@ -1,3 +1,23 @@
-h1 {
-  color: red;
+body {
+  font-family: "Caveat", cursive;
+}
+.container {
+  border: 1px solid black;
+  display: block;
+  margin: 0 auto;
+  border-radius: 3px;
+  width: 50%;
+  margin-top: 70px;
+  padding-left: 50px;
+}
+#searchEngine {
+  padding: 30px 90px;
+}
+#input {
+  width: 300px;
+}
+#extras {
+  font-size: small;
+  position: relative;
+  bottom: 15px;
 }
