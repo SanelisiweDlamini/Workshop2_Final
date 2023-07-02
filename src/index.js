@@ -49,7 +49,7 @@ function getCurrent(response) {
   let displayedHumidity = document.querySelector("#humid");
   displayedHumidity.innerHTML = `Humidity: ${humidity}%`;
   let displayedWindspeed = document.querySelector("#windspeed");
-  displayedWindspeed.innerHTML = `Wind-speed: ${windspeed}%`;
+  displayedWindspeed.innerHTML = `Wind-speed: ${windspeed}km/h`;
   let iconID = response.data.weather[0].icon;
   let icon = document.querySelector("#icon");
   icon.setAttribute(
