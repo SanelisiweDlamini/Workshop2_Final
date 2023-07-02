@@ -24,3 +24,16 @@ body {
 #right {
   padding: 10px 0 10px 90px;
 }
+#weather_forecast {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.col-2 {
+  border: 1px solid black;
+  border-radius: 3px;
+  margin-right: 3px;
+  width: 90px;
+}
+.col-2:hover {
+  background: #a9a9a9;
+  color: aliceblue;
+}
