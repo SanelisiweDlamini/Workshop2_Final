@@ -22,7 +22,8 @@ search.addEventListener("submit", check);
 function check(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("h2");
-  searchedCity.innerHTML = input.value;
+  searchedCity.innerHTML =
+    input.value.charAt(0).toUpperCase(0) + input.value.slice(1);
 
   let apiKey = "095adb74c2b19077ce4ca65f855199f0";
   let searchCity = input.value;
@@ -49,4 +50,11 @@ function getCurrent(response) {
   displayedHumidity.innerHTML = `Humidity: ${humidity}%`;
   let displayedWindspeed = document.querySelector("#windspeed");
   displayedWindspeed.innerHTML = `Wind-speed: ${windspeed}%`;
+  let iconID = response.data.weather[0].icon;
+  let icon = document.querySelector("#icon");
+  icon.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${iconID}@2x.png`
+  );
+  icon.setAttribute("alt", updatedDesc);
 }

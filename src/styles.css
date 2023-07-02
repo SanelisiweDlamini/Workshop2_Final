@@ -21,3 +21,6 @@ body {
   position: relative;
   bottom: 15px;
 }
+#right {
+  padding: 10px 0 10px 90px;
+}
