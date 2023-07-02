@@ -19,6 +19,80 @@ todaysDate.innerHTML = `Updated: ${todayDate}/${month}/${year} (${hour}:${update
 let search = document.querySelector("#searchEngine");
 search.addEventListener("submit", check);
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "743bee57fddbfaf52447193a87d5dd25";
+  let url = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;
+  console.log(url);
+}
+
+function displayForecast() {
+  let forecastElement = document.querySelector("#weather_forecast");
+  forecastElement.innerHTML = `
+  <div class="col-2" id="1day">
+          Mon
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            id="icon"
+            alt="Clear"
+            width="50px"
+          />
+          13°C|56°F
+        </div>
+        <div class="col-2" id="2day">
+          Tue
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            id="icon"
+            alt="Clear"
+            width="50px"
+          />
+          13°C|56°F
+        </div>
+        <div class="col-2" id="3day">
+          Wed
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            id="icon"
+            alt="Clear"
+            width="50px"
+          />
+          13°C|56°F
+        </div>
+        <div class="col-2" id="4day">
+          Thur
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            id="icon"
+            alt="Clear"
+            width="50px"
+          />
+          13°C|56°F
+        </div>
+        <div class="col-2" id="5day">
+          Fri
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            id="icon"
+            alt="Clear"
+            width="50px"
+          />
+          13°C|56°F
+        </div>
+        <div class="col-2" id="5day">
+          Sat
+          <img
+            src="https://openweathermap.org/img/wn/10d@2x.png"
+            id="icon"
+            alt="Clear"
+            width="50px"
+          />
+          13°C|56°F
+        </div>
+  
+  `;
+}
+
 function check(event) {
   event.preventDefault();
   let searchedCity = document.querySelector("h2");
@@ -57,4 +131,5 @@ function getCurrent(response) {
     `https://openweathermap.org/img/wn/${iconID}@2x.png`
   );
   icon.setAttribute("alt", updatedDesc);
+  getForecast(response.data.coord);
 }
