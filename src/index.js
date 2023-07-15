@@ -21,12 +21,16 @@ search.addEventListener("submit", check);
 
 function getForecast(coordinates) {
   console.log(coordinates);
-  let apiKey = "743bee57fddbfaf52447193a87d5dd25";
-  let url = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;
+  let apiKey = "bd79ao40tde3dec118ca46bc3e6dd55f";
+  let url = `https://api.shecodes.io/weather/v1/forecast?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;
+  /*  let url = `https://api.shecodes.io/weather/v1/current?lon=${coordinates.lon}&lat=${coordinates.lat}&key=${apiKey}`;*/
   console.log(url);
+  axios.get(url).then(displayForecast);
+  //console.log(response.data);
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#weather_forecast");
   forecastElement.innerHTML = `
   <div class="col-2" id="1day">
@@ -107,7 +111,6 @@ function check(event) {
 }
 
 function getCurrent(response) {
-  console.log(response.data);
   let celcWeather = response.data.main.temp;
   let ferWeather = (celcWeather * 9) / 5 + 32;
   let currentTemp = document.querySelector(".weather");
