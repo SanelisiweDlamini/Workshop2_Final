@@ -31,7 +31,55 @@ function getForecast(coordinates) {
 
 function displayForecast(response) {
   console.log(response.data.daily);
-  let forecastElement = document.querySelector("#weather_forecast");
+  console.log(response.data.daily[1].time);
+  let daily = response.data.daily;
+
+  //day1
+  let day1 = document.querySelector("#day1day");
+  let day = new Date(daily[1].time * 1000);
+  day1.innerHTML = day;
+  let day1celc = Math.round(daily[1].temperature.day);
+  let day1fer = Math.round((day1celc * 9) / 5 + 32);
+  let day1temp = document.querySelector("#day1temp");
+  day1temp.innerHTML = `${day1celc}°C | ${day1fer}°F`;
+  let icon1 = document.querySelector(".icon");
+  icon1.setAttribute("src", daily[1].condition.icon_url);
+
+  //day2
+
+  let day2 = document.querySelector("#day2day");
+  let day2day = new Date(daily[2].time * 1000);
+  day2.innerHTML = day2day;
+  let day2celc = Math.round(daily[2].temperature.day);
+  let day2fer = Math.round((day2celc * 9) / 5 + 32);
+  let day2temp = document.querySelector("#day2temp");
+  day2temp.innerHTML = `${day2celc}°C | ${day2fer}°F`;
+  let icon2 = document.querySelector(".icon");
+  icon2.setAttribute("src", daily[2].condition.icon_url);
+
+  //day 3
+  let day3 = document.querySelector("#day3day");
+  let day3day = new Date(daily[3].time * 1000);
+  day3.innerHTML = day3day;
+  let day3celc = Math.round(daily[3].temperature.day);
+  let day3fer = Math.round((day3celc * 9) / 5 + 32);
+  let day3temp = document.querySelector("#day3temp");
+  day3temp.innerHTML = `${day3celc}°C | ${day3fer}°F`;
+  let icon3 = document.querySelector(".icon");
+  icon3.setAttribute("src", daily[3].condition.icon_url);
+
+  //day4
+  let day4 = document.querySelector("#day4day");
+  let day4day = new Date(daily[4].time * 1000);
+  day4.innerHTML = day4day;
+  let day4celc = Math.round(daily[4].temperature.day);
+  let day4fer = Math.round((day4celc * 9) / 5 + 32);
+  let day4temp = document.querySelector("#day4temp");
+  day4temp.innerHTML = `${day4celc}°C | ${day4fer}°F`;
+  let icon4 = document.querySelector(".icon");
+  icon4.setAttribute("src", daily[4].condition.icon_url);
+
+  /* let forecastElement = document.querySelector("#weather_forecast");
   forecastElement.innerHTML = `
   <div class="col-2" id="1day">
           Mon
@@ -95,6 +143,7 @@ function displayForecast(response) {
         </div>
   
   `;
+  */
 }
 
 function check(event) {
