@@ -1,6 +1,22 @@
 let x = new Date();
 let todayDate = x.getDate();
 let month = x.getMonth();
+let months = [
+  "Jan",
+  "Feb",
+  "Mar",
+  "Apr",
+  "May",
+  "Jun",
+  "Jul",
+  "Aug",
+  "Sep",
+  "Oct",
+  "Nov",
+  "Dec",
+];
+let actualMonth = months[month];
+console.log(actualMonth);
 let year = x.getFullYear();
 let hour = x.getHours();
 let minutes = x.getMinutes();
@@ -15,7 +31,7 @@ if (hour > 16) {
   document.getElementById("box").style.color = "white";
 }
 let todaysDate = document.querySelector(".date");
-todaysDate.innerHTML = `Updated: ${todayDate}/${month}/${year} (${hour}:${updatedMins})`;
+todaysDate.innerHTML = `Updated: ${todayDate}/${actualMonth}/${year} (${hour}:${updatedMins})`;
 let search = document.querySelector("#searchEngine");
 search.addEventListener("submit", check);
 
@@ -28,6 +44,12 @@ function getForecast(coordinates) {
   axios.get(url).then(displayForecast);
   //console.log(response.data);
 }
+function getDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let dayOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return dayOfWeek[day];
+}
 
 function displayForecast(response) {
   console.log(response.data.daily);
@@ -37,7 +59,8 @@ function displayForecast(response) {
   //day1
   let day1 = document.querySelector("#day1day");
   let day = new Date(daily[1].time * 1000);
-  day1.innerHTML = day;
+  let day1OfWeek = day.toString().substring(0, 3);
+  day1.innerHTML = day1OfWeek;
   let day1celc = Math.round(daily[1].temperature.day);
   let day1fer = Math.round((day1celc * 9) / 5 + 32);
   let day1temp = document.querySelector("#day1temp");
@@ -49,7 +72,8 @@ function displayForecast(response) {
 
   let day2 = document.querySelector("#day2day");
   let day2day = new Date(daily[2].time * 1000);
-  day2.innerHTML = day2day;
+  let day2OfWeek = day2day.toString().substring(0, 3);
+  day2.innerHTML = day2OfWeek;
   let day2celc = Math.round(daily[2].temperature.day);
   let day2fer = Math.round((day2celc * 9) / 5 + 32);
   let day2temp = document.querySelector("#day2temp");
@@ -60,7 +84,8 @@ function displayForecast(response) {
   //day 3
   let day3 = document.querySelector("#day3day");
   let day3day = new Date(daily[3].time * 1000);
-  day3.innerHTML = day3day;
+  let day3OfWeek = day3day.toString().substring(0, 3);
+  day3.innerHTML = day3OfWeek;
   let day3celc = Math.round(daily[3].temperature.day);
   let day3fer = Math.round((day3celc * 9) / 5 + 32);
   let day3temp = document.querySelector("#day3temp");
@@ -71,7 +96,8 @@ function displayForecast(response) {
   //day4
   let day4 = document.querySelector("#day4day");
   let day4day = new Date(daily[4].time * 1000);
-  day4.innerHTML = day4day;
+  let day4OfWeek = day4day.toString().substring(0, 3);
+  day4.innerHTML = day4OfWeek;
   let day4celc = Math.round(daily[4].temperature.day);
   let day4fer = Math.round((day4celc * 9) / 5 + 32);
   let day4temp = document.querySelector("#day4temp");
@@ -79,6 +105,17 @@ function displayForecast(response) {
   let icon4 = document.querySelector(".icon");
   icon4.setAttribute("src", daily[4].condition.icon_url);
 
+  // day5
+  let day5 = document.querySelector("#day5day");
+  let day5day = new Date(daily[5].time * 1000);
+  let day5OfWeek = day5day.toString().substring(0, 3);
+  day5.innerHTML = day5OfWeek;
+  let day5celc = Math.round(daily[5].temperature.day);
+  let day5fer = Math.round((day5celc * 9) / 5 + 32);
+  let day5temp = document.querySelector("#day5temp");
+  day5temp.innerHTML = `${day5celc}°C | ${day5fer}°F`;
+  let icon5 = document.querySelector(".icon");
+  icon5.setAttribute("src", daily[5].condition.icon_url);
   /* let forecastElement = document.querySelector("#weather_forecast");
   forecastElement.innerHTML = `
   <div class="col-2" id="1day">
